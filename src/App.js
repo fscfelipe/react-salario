@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import InputFullSalary from './components/InputFullSalary';
+
 import { calculateSalaryFrom } from './helpers/salary';
+
+import InputFullSalary from './components/InputFullSalary';
 import InputReadOnly from './components/InputReadOnly';
+import ProportionBar from './components/ProportionBar';
+
+import './App.css';
 
 const COLOR_INSS = '#e67e22';
 const COLOR_IRPF = '#c0392b';
@@ -44,7 +48,6 @@ class App extends Component {
             onSalaryChange={this.handleFullSalaryChange}
           />
         </div>
-
         <div className="row">
           <InputReadOnly label="Base INSS" value={baseINSS} />
           <InputReadOnly
@@ -67,6 +70,14 @@ class App extends Component {
             color={COLOR_NET_SALARY}
           />
         </div>
+        <ProportionBar
+          inss={percentINSS}
+          irpf={percentIRPF}
+          netSalary={percentNetSalary}
+          colorINSS={COLOR_INSS}
+          colorIRPF={COLOR_IRPF}
+          colorNetSalary={COLOR_NET_SALARY}
+        />
       </div>
     );
   }
